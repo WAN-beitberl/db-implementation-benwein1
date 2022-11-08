@@ -1,0 +1,67 @@
+package talbar;
+import DS.*;
+
+public class table {
+	
+private Node<String> col1 ;
+private Node<String> col2;
+
+public void insertColumnNames(String col1, String col2)
+	{
+		this.col1.setValue(col1);
+		this.col2.setValue(col2);
+
+	}
+
+public void insertRow(String col1, String col2)
+	{
+
+		 Node<String> p1 = new Node<String>(col1, null);
+		 Node<String> q = this.col1;
+		 while(q.hasNext())
+		 {
+			 q= q.getNext();
+		 }
+		q.setNext(p1);
+		
+
+		 Node<String> p2 = new Node<String>(col2, null);
+		 Node<String> z = this.col2;
+		 
+		 while(z.hasNext())
+		 {
+			 z= z.getNext();
+		 }
+		z.setNext( p2);
+
+	}
+
+public String getValue(String name , int row)
+	{
+		Node<String> z = new Node<String>(null) ;
+	   if(name.equals(this.col1.getValue()))
+	   {
+		   z= this.col1;
+	   }
+	   
+	   if(name.equals(this.col2.getValue()))
+	   {
+		   z= this.col2;
+	   }
+	   z=z.getNext();
+	   
+	   int i=1;
+	   while(z.hasNext())
+	   {
+		   if(i==row)
+		   {
+			   break;
+		   }
+		   i++;
+		   z=z.getNext();
+	   }
+	   return z.getValue();
+	}
+
+
+}
